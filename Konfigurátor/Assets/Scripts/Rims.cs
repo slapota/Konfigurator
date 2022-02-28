@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Rims : MonoBehaviour
 {
-    public GameObject[] panels, rims, prefabs, instances;
+    public GameObject[] panels, prefabs;
     public GameObject canvas, main, tireMenu;
-    int i;
+    public int i;
 
     void Start()
     {
         canvas.SetActive(false);
+        prefabs[i].SetActive(true);
     }
     public void RimMenu()
     {
@@ -30,17 +31,11 @@ public class Rims : MonoBehaviour
     }
     public void ChangeRims()
     {
-        for (int o = 0; o < instances.Length; o++)
+        for (int o = 0; o < prefabs.Length; o++)
         {
-            if(instances[o] != null)
-            {
-                Destroy(instances[o]);
-            }
+            prefabs[o].SetActive(false);
         }
-        for (int o = 0; o < rims.Length; o++)
-        {
-            instances[o] = Instantiate(prefabs[o], rims[o].transform);
-        }
+        prefabs[i].SetActive(true);
     }
     public void Next()
     {
