@@ -10,7 +10,6 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         public GameObject[] materials;
         public Material body;
         public SimpleScrollSnap sss;
-        public GameObject main, canvas;
         int i = 0;
 
         void Start()
@@ -21,16 +20,6 @@ namespace DanielLochner.Assets.SimpleScrollSnap
             {
                 sss.Add(i, sss.Content.childCount);
             }
-        }
-        public void Back()
-        {
-            canvas.SetActive(false);
-            main.SetActive(true);
-        }
-        public void ColorMenu()
-        {
-            canvas.SetActive(true);
-            main.SetActive(false);
         }
         public void ChangeColor()
         {

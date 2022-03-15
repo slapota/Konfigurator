@@ -10,39 +10,19 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         public GameObject[] panels, tires;
         public Material[] materials;
         public SimpleScrollSnap sss;
-        public GameObject main, tireMenu, canvas;
         int i = 0;
 
         void Start()
         {
-            main.SetActive(true);
-            canvas.SetActive(false);
-            tireMenu.SetActive(false);
             for (int o = 0; o < tires.Length; o++)
             {
                 tires[o].GetComponent<MeshRenderer>().material = materials[0];
             }
             sss = sss.GetComponent<SimpleScrollSnap>();
-            /*foreach (var i in materials)
+            foreach (var i in panels)
             {
                 sss.Add(i, sss.Content.childCount);
-            }*/
-        }
-        public void Menu()
-        {
-            main.SetActive(true);
-            tireMenu.SetActive(false);
-        }
-        public void TireMenu()
-        {
-            tireMenu.SetActive(false);
-            canvas.SetActive(true);
-        }
-        public void TiresMenu()
-        {
-            tireMenu.SetActive(true);
-            main.SetActive(false);
-            canvas.SetActive(false);
+            }
         }
         public void ChangeTires()
         {
