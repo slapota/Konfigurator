@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,13 +11,17 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         public GameObject[] panels, objects;
         public SimpleScrollSnap ScrollSnap;
         public Material body;
-        int i = 0;
+        [SerializeField] int i = 0;
 
         void Start()
         {
             if(body != null)
             {
                 ChangeColor();
+            }
+            if(objects.Length > 0)
+            {
+                Change();
             }
             ScrollSnap = ScrollSnap.GetComponent<SimpleScrollSnap>();
             foreach (var item in panels)
@@ -39,26 +44,16 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         public void Next()
         {
             i++;
-            if (i < 0)
-            {
-                i = objects.Length - 1;
-            }
-            else if (i > objects.Length - 1)
-            {
-                i = 0;
-            }
+            Clamp();
         }
         public void Previous()
         {
             i--;
-            if (i < 0)
-            {
-                i = objects.Length - 1;
-            }
-            else if (i > objects.Length - 1)
-            {
-                i = 0;
-            }
+            Clamp();
+        }
+        void Clamp()
+        {
+            i = (int)Mathf.Repeat(i, panels.Length);
         }
     }
 }
